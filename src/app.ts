@@ -5,7 +5,7 @@ import { router } from "./routes";
 import path from "path";
 import db from "./config/mongo";
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || process.env.LOCAL_PORT;
 
 const app = express();
 app.use(cors());
