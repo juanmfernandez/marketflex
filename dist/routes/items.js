@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const items_1 = require("../controllers/items");
+const session_1 = require("../middleware/session");
+const upload_1 = require("../middleware/upload");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.get("/:id", items_1.getItem);
+router.get("/", items_1.getItems);
+router.post("/", session_1.checkJwt, upload_1.checkMultipart, upload_1.handleUploadFirebase, items_1.postItem);
+router.put("/:id", session_1.checkJwt, items_1.updateItem);
+router.delete("/:id", session_1.checkJwt, items_1.deleteItem);
